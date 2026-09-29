@@ -1,30 +1,18 @@
 from collections import deque
 import time
 
-# Larger graph
 graph = {
     'A': ['B', 'C'],
     'B': ['D', 'E'],
-    'C': ['F', 'G'],
-    'D': ['H', 'I'],
-    'E': ['J', 'K'],
-    'F': ['L', 'M'],
-    'G': ['N', 'O'],
-    'H': [],
-    'I': [],
-    'J': [],
-    'K': [],
-    'L': [],
-    'M': [],
-    'N': [],
-    'O': []
+    'C': ['F'],
+    'D': [],
+    'E': [],
+    'F': []
 }
-
 
 def bfs(graph, start, goal):
     queue = deque([start])
     visited = set()
-    nodes_expanded = 0
 
     while queue:
         node = queue.popleft()
@@ -33,22 +21,18 @@ def bfs(graph, start, goal):
             continue
 
         visited.add(node)
-        nodes_expanded += 1
 
         if node == goal:
-            return nodes_expanded
+            return len(visited)
 
-        for neighbour in graph[node]:
-            if neighbour not in visited:
-                queue.append(neighbour)
+        queue.extend(graph[node])
 
-    return nodes_expanded
+    return len(visited)
 
 
 def dfs(graph, start, goal):
     stack = [start]
     visited = set()
-    nodes_expanded = 0
 
     while stack:
         node = stack.pop()
@@ -57,56 +41,37 @@ def dfs(graph, start, goal):
             continue
 
         visited.add(node)
-        nodes_expanded += 1
 
         if node == goal:
-            return nodes_expanded
+            return len(visited)
 
-        for neighbour in graph[node]:
-            if neighbour not in visited:
-                stack.append(neighbour)
+        stack.extend(reversed(graph[node]))
 
-    return nodes_expanded
+    return len(visited)
 
 
 runs = 10000
 
-# BFS profiling
-start_time = time.perf_counter()
+start = time.perf_counter()
 
-for i in range(runs):
-    bfs_nodes = bfs(graph, 'A', 'O')
+for _ in range(runs):
+    bfs_nodes = bfs(graph, 'A', 'F')
 
-end_time = time.perf_counter()
-
-bfs_total_time = (end_time - start_time) * 1000
-bfs_average = bfs_total_time / runs
+bfs_time = time.perf_counter() - start
 
 
-# DFS profiling
-start_time = time.perf_counter()
+start = time.perf_counter()
 
-for i in range(runs):
-    dfs_nodes = dfs(graph, 'A', 'O')
+for _ in range(runs):
+    dfs_nodes = dfs(graph, 'A', 'F')
 
-end_time = time.perf_counter()
-
-dfs_total_time = (end_time - start_time) * 1000
-dfs_average = dfs_total_time / runs
+dfs_time = time.perf_counter() - start
 
 
-# Display results
-print("SLE-2: BFS vs DFS Profiling")
-print("----------------------------")
+print("BFS")
+print("Total time:", bfs_time * 1000, "ms")
+print("Nodes expanded:", bfs_nodes)
 
-print("Number of runs:", runs)
-
-print()
-print("BFS Total Time:", bfs_total_time, "ms")
-print("BFS Average Time:", bfs_average, "ms")
-print("BFS Nodes Expanded:", bfs_nodes)
-
-print()
-print("DFS Total Time:", dfs_total_time, "ms")
-print("DFS Average Time:", dfs_average, "ms")
-print("DFS Nodes Expanded:", dfs_nodes)
+print("\nDFS")
+print("Total time:", dfs_time * 1000, "ms")
+print("Nodes expanded:", dfs_nodes)
