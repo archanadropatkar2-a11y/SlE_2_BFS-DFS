@@ -1,0 +1,15 @@
+SLE-2 BFS vs DFS Profiling Results
+
+Algorithm: BFS
+Total Time: 15.549799999462266 ms
+Nodes Expanded: 6
+
+Algorithm: DFS
+Total Time: 17.269900000428606 ms
+Nodes Expanded: 6
+
+Number of Runs: As implemented in sle2_bfs_vs_dfs.py
+
+Observation:
+For this particular graph and execution, BFS took less measured time than DFS.
+Both algorithms expanded 6 nodes.
