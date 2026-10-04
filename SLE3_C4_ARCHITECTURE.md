@@ -1,14 +1,40 @@
-!\[C4 Context Diagram](out/diagrams/C4-Context/system.jpg)
+\---
 
 
 
-!\[C4 Container Diagram](out/diagrams/C4-Container/container.jpg)
+\## 9. AI Contribution Note
 
 
 
-!\[C4 Component Diagram](out/diagrams/C4-Component/component.jpg)
+AI tools were used as a supporting tool during the development of
+
+the SLE-3 architecture.
 
 
 
-!\[C4 Code Diagram](out/diagrams/C4-Code/code.jpg)
+AI assistance was used for:
+
+
+
+\- Understanding the C4 architecture model.
+
+\- Organizing the Context, Container, Component, and Code levels.
+
+\- Improving the structure of the architecture documentation.
+
+\- Reviewing the presentation of the architecture diagrams.
+
+\- Supporting documentation and formatting.
+
+
+
+The final architecture, project decisions, diagrams, and implementation
+
+were reviewed and understood by the student.
+
+
+
+AI was used as a support tool, while the student remained responsible
+
+for the final design and project work.
 
