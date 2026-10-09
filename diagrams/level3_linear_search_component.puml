@@ -1,0 +1,30 @@
+@startuml Level3_LinearSearch_Component
+title Level 3 - Linear Search Component Diagram (Horizontal View)\nLinear Search Module - Component Process Flow
+left to right direction
+skinparam shadowing true
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #0B5ED7
+skinparam ArrowFontColor #0B5ED7
+skinparam ArrowThickness 2
+skinparam rectangle {
+  BackgroundColor #1E6FD9
+  BorderColor #0B4FB0
+  FontColor #FFFFFF
+  RoundCorner 25
+}
+
+rectangle "Input Handler\n(Array and target)" as IH
+rectangle "Array Traversal\nIterate through elements" as AT
+rectangle "Element Comparator\nCompare with target" as EC
+rectangle "Position Tracker\n(Match found)" as PT
+rectangle "Result Handler\n(Return index ->\nSearch result)" as RH
+
+IH --> AT : Array and\ntarget
+AT --> EC : Pass current\nelement
+EC --> PT : Match\nfound
+PT --> RH : Return\nindex
+EC .up.> AT : No match -> loop
+RH .[dashed].> IH : Search result -> feedback to Input Handler
+
+footer Linear Search: O(n) time complexity • Returns index if found, otherwise continues to next element
+@enduml

@@ -1,0 +1,31 @@
+@startuml Level4_BinarySearch_Flowchart
+title Level 4 - Binary Search Code Diagram - Flowchart View
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #001A66
+skinparam activity {
+  BackgroundColor #9DC4FA
+  BorderColor #001A66
+  FontColor #001A66
+}
+skinparam activityDiamond {
+  BackgroundColor #9DC4FA
+  BorderColor #001A66
+  FontColor #001A66
+}
+
+start
+:Initialize low = 0, high = n - 1;
+while (Is low <= high?) is (Yes)
+  :Calculate mid = (low + high) // 2;
+  if (Is arr[mid] == target?) then (Yes)
+    :Return mid;
+    stop
+  elseif (Is arr[mid] < target?) then (Yes)
+    :low = mid + 1;
+  else (No)
+    :high = mid - 1;
+  endif
+endwhile (No)
+:Return -1;
+stop
+@enduml

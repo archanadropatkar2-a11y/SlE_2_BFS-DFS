@@ -1,0 +1,41 @@
+@startuml Level4_LinearSearch_Flowchart
+title Level 4 - Linear Search Code Diagram (Flowchart View)
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #1E6FD9
+skinparam activity {
+  BackgroundColor #EEF3FF
+  BorderColor #1E6FD9
+  FontColor #001A66
+}
+skinparam activityDiamond {
+  BackgroundColor #FFFFFF
+  BorderColor #003380
+  FontColor #001A66
+}
+
+class LinearSearch {
+  + linear_search(arr: list, target: value): int
+  --
+  Purpose: Find target in list by checking
+  each element sequentially
+  Returns: index if found, -1 if not found
+}
+
+start
+:i = 0;
+while (i < len?) is (Yes)
+  if (arr[i] == target?) then (Yes)
+    :return index;
+    stop
+  else (No)
+    :i++;
+  endif
+endwhile (No)
+:return -1;
+stop
+
+note right
+  Loop continues until **target** is found
+  or //i// reaches list length
+end note
+@enduml

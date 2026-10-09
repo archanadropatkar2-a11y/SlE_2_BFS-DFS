@@ -1,0 +1,30 @@
+@startuml Level3_BinarySearch_Component
+title Level 3 - Binary Search Component Diagram - Horizontal View
+left to right direction
+skinparam shadowing true
+skinparam defaultFontName DejaVu Sans
+skinparam ArrowColor #001A66
+skinparam ArrowFontColor #0050B3
+skinparam ArrowThickness 2
+skinparam rectangle {
+  BackgroundColor #D0E2FF
+  BorderColor #2F6FD0
+  FontColor #001A66
+  RoundCorner 25
+}
+
+rectangle "Input Handler" as IH
+rectangle "Range Initializer" as RI
+rectangle "Midpoint Calculator" as MC
+rectangle "Target Comparator" as TC
+rectangle "Range Updater" as RU
+rectangle "Result Handler" as RH
+rectangle "Output" as OUT #7BA3E0
+
+IH --> RI : Sorted array\nand target
+RI --> MC : Low and high
+MC --> TC : Middle element
+MC --> RU : Target not found\n(Updated range)
+MC --> RH : Target found
+RH --> OUT : Return index or -1
+@enduml
